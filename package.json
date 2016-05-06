@@ -9,9 +9,10 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.3.5",
     "express": "~4.2.x",
     "parse": "~1.6.12",
-    "parse-server": "~2.0.0"
+    "parse-server": "~2.2.7"
   },
   "scripts": {
     "start": "node index.js"
