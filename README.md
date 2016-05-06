@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/verygreenboi/bambamparseserver.svg?branch=master)](https://travis-ci.org/verygreenboi/bambamparseserver)
 # parse-server-example
 
 Example project using the parse-server module on Express.
