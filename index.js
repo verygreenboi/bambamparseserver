@@ -28,7 +28,7 @@ var api = new ParseServer({
   databaseURI: process.env.DATABASE_URI || 'mongodb://localhost:27017/dev_bambam',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'PwYxMbm5w2ztP5EKIx1bqt5HZIYMoHFy3b7xhDKF',
-  masterKey: 'JiMigz1dN7elHVkdBPJnIXaNh1JcJjjtTsa0oaIw',
+  masterKey: process.env.MASTER_KEY || 'JiMigz1dN7elHVkdBPJnIXaNh1JcJjjtTsa0oaIw',
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse', // Don't forget to change to https if needed
   publicServerURL: process.env.PUB_SERVER_URL || 'http://10.0.2.2:1337/parse',
   push:{
