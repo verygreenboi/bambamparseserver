@@ -5,20 +5,20 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var http = require('http');
 
-/* Note: using staging server url, remove .testing() for production
-Using .testing() will overwrite the debug flag with true */ 
-var LEX = require('letsencrypt-express').testing();
+// /* Note: using staging server url, remove .testing() for production
+// Using .testing() will overwrite the debug flag with true */ 
+// var LEX = require('letsencrypt-express').testing();
 
-var lex = LEX.create({
-  configDir: require('os').homedir() + '/letsencrypt/etc',
-  approveRegistration: function (hostname, cb) {
-    cb(null, {
-      domains: ['localhost'],
-      email: 'verygreenboi@live.com',
-      agreeTos: true
-    });
-  }
-});
+// var lex = LEX.create({
+//   configDir: require('os').homedir() + '/letsencrypt/etc',
+//   approveRegistration: function (hostname, cb) {
+//     cb(null, {
+//       domains: ['localhost'],
+//       email: 'verygreenboi@live.com',
+//       agreeTos: true
+//     });
+//   }
+// });
 
 if (!process.env.DATABASE_URI) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
