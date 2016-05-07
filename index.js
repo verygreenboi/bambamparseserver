@@ -43,7 +43,7 @@ var api = new ParseServer({
     }
   },  
   liveQuery: {
-    classNames: ["Tunes", "Comments"] // List of classes to support for query subscriptions
+    classNames: ["Tunes", "Comment"] // List of classes to support for query subscriptions
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server

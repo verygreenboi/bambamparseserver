@@ -12,6 +12,7 @@
     "bluebird": "^3.3.5",
     "express": "~4.2.x",
     "parse": "~1.6.12",
+    "parse-dashboard": "^1.0.10",
     "parse-server": "~2.2.7"
   },
   "scripts": {
