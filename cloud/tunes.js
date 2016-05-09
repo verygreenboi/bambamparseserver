@@ -58,3 +58,19 @@ Parse.Cloud.define("likeTune", function(req, res){
         response.error(error);
     });
 });
+
+Parse.Cloud.define("dislikeTune", function(req, res){
+    var q = Parse.Query("Tunes");
+    q.get(req.params.Tunes.id).then(function(tune){
+        if (tune.get("likeCount") <= 0 ) {
+            tune.set("likeCount", 0);
+        } else {
+            tune.decrement("likeCount");
+        }
+        return tune.save(null, { useMasterKey: true });
+    }).then(function(tune){
+        response.success();
+    }, function(error){
+        response.error(error);
+    });
+});
