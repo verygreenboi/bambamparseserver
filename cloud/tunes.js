@@ -46,31 +46,34 @@ Parse.Cloud.define("tuneline", function(request, response){
 });
 
 Parse.Cloud.define("likeTune", function(req, res){
-    var q = Parse.Query("Tunes");
+    var q = new Parse.Query("Tunes");
     q.get(req.params.tuneId).then(function(tune){
         return tune;
     }).then(function(tune){
         tune.increment("likeCount");
         return tune.save(null, { useMasterKey: true });
     }).then(function(tune){
-        response.success();
+        res.success();
     }, function(error){
-        response.error(error);
+        console.log(error);
+        res.error(error);
     });
 });
 
 Parse.Cloud.define("dislikeTune", function(req, res){
-    var q = Parse.Query("Tunes");
+    var q = new Parse.Query("Tunes");
     q.get(req.params.tuneId).then(function(tune){
         if (tune.get("likeCount") <= 0 ) {
             tune.set("likeCount", 0);
         } else {
-            tune.decrement("likeCount");
+            tune.increment("likeCount", -1);
         }
         return tune.save(null, { useMasterKey: true });
     }).then(function(tune){
-        response.success();
+        console.log("tune disliked");
+        res.success();
     }, function(error){
-        response.error(error);
+        console.log(error);
+        res.error(error);
     });
 });
