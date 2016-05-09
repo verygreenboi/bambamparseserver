@@ -22,7 +22,7 @@ Parse.Cloud.define("tuneline", function(request, response){
   
     var cmpQ = Parse.Query.or(qtf, qmt);
     cmpQ.include("owner");
-    cmpQ.ascending("createdAt");
+    cmpQ.descending("createdAt");
     // cmpQ.find({
     //     success:function(results){
     //         console.log(results);
@@ -43,4 +43,18 @@ Parse.Cloud.define("tuneline", function(request, response){
         response.error(err);
     });
   
+});
+
+Parse.Cloud.define("likeTune", function(req, res){
+    var q = Parse.Query("Tunes");
+    q.get(req.params.Tunes.id).then(function(tune){
+        return tune;
+    }).then(function(tune){
+        tune.increment("likeCount");
+        return tune.save(null, { useMasterKey: true });
+    }).then(function(tune){
+        response.success();
+    }, function(error){
+        response.error(error);
+    });
 });
