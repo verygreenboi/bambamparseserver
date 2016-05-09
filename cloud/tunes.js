@@ -47,7 +47,7 @@ Parse.Cloud.define("tuneline", function(request, response){
 
 Parse.Cloud.define("likeTune", function(req, res){
     var q = Parse.Query("Tunes");
-    q.get(req.params.Tunes.id).then(function(tune){
+    q.get(req.params.tuneId).then(function(tune){
         return tune;
     }).then(function(tune){
         tune.increment("likeCount");
@@ -61,7 +61,7 @@ Parse.Cloud.define("likeTune", function(req, res){
 
 Parse.Cloud.define("dislikeTune", function(req, res){
     var q = Parse.Query("Tunes");
-    q.get(req.params.Tunes.id).then(function(tune){
+    q.get(req.params.tuneId).then(function(tune){
         if (tune.get("likeCount") <= 0 ) {
             tune.set("likeCount", 0);
         } else {
